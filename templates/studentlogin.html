@@ -1,0 +1,86 @@
+{% extends 'index.html' %}
+{% block 'body' %}
+{% if messages %}
+    <div id="message-box-container">
+        {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show custom-alert" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+<h3 align = "center"><u style="color:#FFFFE0">Student Login</u></h3>
+<form method="post" action="checkstudentlogin" >
+    {% csrf_token %}
+
+    <table align = "center">
+        <tr>
+            <td>
+                <label style="color:plum">Enter Student ID</label>
+            </td>
+            <td> <input type="text" name="sid" required class="textbox"/></td>
+
+        </tr>
+        <tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+         <tr>
+            <td>
+                <label style="color:plum">Password</label>
+            </td>
+             <td><input type="password" name="pwd" required class="textbox"/></td>
+
+        </tr>
+
+        <tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="Submit" value="login" class="button-17"/>
+            </td>
+        </tr>
+        <tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+        <tr>
+            <td></td>
+            <td><input type="reset" value="reset" style="background:none;border:none;color:plum;text-decoration:unerline;cursor:pointer;margin-left:14px;font-size:10px">
+            </td>
+        </tr>
+    </table>
+</form>
+<style>
+    #message-box-container {
+        background-color:white;
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        z-index: 1050; /* Ensure it appears above other elements */
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .custom-alert {
+        width: 200px;
+        padding: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-close {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Automatically hide the message box after a delay (optional)
+        const messageBox = document.getElementById('message-box-container');
+        if (messageBox) {
+            setTimeout(() => {
+                messageBox.style.display = 'none';
+            }, 1500); // Hide after 5 seconds
+        }
+    });
+</script>
+
+{% endblock %}

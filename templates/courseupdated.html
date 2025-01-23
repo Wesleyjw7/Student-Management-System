@@ -1,0 +1,94 @@
+{% extends 'viewstudent.html' %}
+{% block 'body' %}
+
+{% if messages %}
+    <div id="message-box-container">
+        {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show custom-alert" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 80vh;">
+    <h2 style="color:#E0E0E0;margin-top:50px"><u>update Course</u></h2>
+    <form method="POST" action="/course_updated/{{cid}}" style="text-align: center;">
+        {% csrf_token %}
+        <table>
+          <tr>
+            <td>
+              <label style="color:#AAF0D1">Course ID</label>
+            </td>
+            <td>
+              <input type="number" value="{{cid}}" readonly class="textbox" >
+            </td>
+            <tr>
+                <td><label style="color:#AAF0D1">Course Code</label></td>
+                <td><input type="number" name="coursecode" required class="textbox"></td>
+            </tr>
+            <tr>
+                <td><label style="color:#AAF0D1">Course Title</label></td>
+                <td><input type="text" name="coursetitle" required class="textbox"></td>
+            </tr>
+            <tr>
+                <td><label style="color:#AAF0D1">Credits</label></td>
+                <td><input type="text" name="course_credits" required class="textbox"></td>
+            </tr>
+        </table>
+        <div style="text-align: center; margin-top: 20px;">
+            <button type="submit" class="button-17" style="color:purple;">
+                update
+            </button>
+        </div>
+
+    </form>
+    <div style="position: absolute; top: 20px; left: 20px;">
+    <a href="{% url 'updatecourse' %}">
+        <button class="button-17" style="padding: 5px; border: none; background-color: white;">
+            &#8592; <!-- Unicode character for a left arrow -->
+        </button>
+    </a>
+</div>
+
+</div>
+
+<style>
+    #message-box-container {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1050;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .custom-alert {
+        background-color:aqua;
+        width: 200px;
+        padding: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-close {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Automatically hide the message box after a delay (optional)
+        const messageBox = document.getElementById('message-box-container');
+        if (messageBox) {
+            setTimeout(() => {
+                messageBox.style.display = 'none';
+            }, 5000); // Hide after 5 seconds
+        }
+    });
+</script>
+
+{% endblock %}

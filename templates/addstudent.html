@@ -1,0 +1,140 @@
+{% extends 'viewstudent.html' %}
+{% block 'body' %}
+
+<h2  align="center" style="color:#E0E0E0"><u>Add Student</u></h2>
+{% if messages %}
+    <div id="message-box-container">
+        {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show custom-alert" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<form method="post" action="insertstudent">
+    {% csrf_token %}
+
+    <table align="center" width="50%">
+        <tr>
+            <td><label style="color:#AAF0D1">Student Id</label></td>
+            <td><input type="number" name="sid" required class="textbox"></td>
+        </tr>
+        <tr>
+            <td><label style="color:#AAF0D1">Full Name</label></td>
+            <td><input type="text" name="sname" required class="textbox"></td>
+        </tr>
+        <tr>
+            <td><label style="color:#AAF0D1">Gender</label></td>
+            <td>
+                <select class="button-17" name="sgender">
+                    <option>-select-</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>others</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label style="color:#AAF0D1">Program</label></td>
+            <td>
+                <select class="button-17" name="sprogram">
+                    <option>-select-</option>
+                    <option>B.Tech.</option>
+                    <option>M.Tech.</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label style="color:#AAF0D1">Select Department</label></td>
+            <td>
+                <select class="button-17" name="sdept">
+                    <option>-Select-</option>
+                    <option>ECE</option>
+                    <option>CSE(R)</option>
+                    <option>CSE(H)</option>
+                    <option>CSE(IT)</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label style="color:#AAF0D1">Semester</label></td>
+            <td>
+                <select class="button-17" name="ssem">
+                    <option>-select-</option>
+                    <option>Even</option>
+                    <option>Odd</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label style="color:#AAF0D1">Year</label></td>
+            <td><input type="number" name="syear" required class="textbox"></td>
+        </tr>
+        <tr>
+            <td><label style="color:#AAF0D1">Email</label></td>
+            <td><input type="email" name="semail" required class="textbox"></td>
+        </tr>
+        <tr>
+            <td><label style="color:#AAF0D1">Password</label></td>
+            <td><input type="password" name="spassword" required class="textbox"></td>
+        </tr>
+        <tr>
+            <td><label style="color:#AAF0D1">Contact</label></td>
+            <td><input type="number" name="scontact" required class="textbox"></td>
+        </tr>
+    </table>
+
+<div style="text-align: center; margin-top: 20px;">
+            <button type="submit" class="button-17"  style="color:purple;">
+                Save
+            </button>
+        </div>
+
+</form>
+<div style="position: absolute; top: 20px; left: 20px;">
+    <a href="{% url 'adminstudent' %}">
+        <button class="button-17" style="padding: 5px; border: none; background-color: white;">
+            &#8592; <!-- Unicode character for a left arrow -->
+        </button>
+    </a>
+</div>
+<style>
+    #message-box-container {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1050;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .custom-alert {
+        background-color:aqua;
+        width: 200px;
+        padding: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-close {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Automatically hide the message box after a delay (optional)
+        const messageBox = document.getElementById('message-box-container');
+        if (messageBox) {
+            setTimeout(() => {
+                messageBox.style.display = 'none';
+            }, 5000); // Hide after 5 seconds
+        }
+    });
+</script>
+
+{% endblock %}

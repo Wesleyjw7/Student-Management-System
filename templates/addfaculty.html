@@ -1,0 +1,87 @@
+{% extends 'viewstudent.html' %}
+{% block 'body' %}
+<h2  align="center" style="color:#E0E0E0"><u>Add Faculty</u></h2>
+<form method="post" action="insertfaculty">
+    {% csrf_token %}
+    <table align="center" width="30%">
+        <tr>
+            <td><label style="color:#AAF0D1">Faculty Id</label></td>
+            <td><input type="number" name="fid" required class="textbox"></td>
+        </tr>
+        <tr>
+            <td><label style="color:#AAF0D1">Full Name</label></td>
+            <td><input type="text" name="fname" required class="textbox"></td>
+        </tr>
+        <tr>
+            <td><label style="color:#AAF0D1">Gender</label></td>
+            <td>
+                <select class="button-17" name="fgender">
+                    <option>-select-</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>others</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label style="color:#AAF0D1">Designation</label></td>
+            <td>
+                <select class="button-17" name="fdes">
+                    <option>-select-</option>
+                    <option>M.Tech.</option>
+                    <option>Ph.D.</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label style="color:#AAF0D1">Select Department</label></td>
+            <td>
+                <select class="button-17" name="fdept">
+                    <option>-Select-</option>
+                    <option>ECE</option>
+                    <option>CSE(R)</option>
+                    <option>CSE(H)</option>
+                    <option>CSE(IT)</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label style="color:#AAF0D1">Qualification</label></td>
+            <td>
+                <select class="button-17" name="fqual">
+                    <option>-select-</option>
+                    <option>Professor</option>
+                    <option>Associate Professor</option>
+                    <option>Assistance Professor</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label style="color:#AAF0D1">Email</label></td>
+            <td><input type="email" name="femail" required class="textbox"></td>
+        </tr>
+        <tr>
+            <td><label style="color:#AAF0D1">Password</label></td>
+            <td><input type="password" name="fpassword" required class="textbox"></td>
+        </tr>
+        <tr>
+            <td><label style="color:#AAF0D1">Contact</label></td>
+            <td><input type="number" name="fcontact" required class="textbox"></td>
+        </tr>
+
+    </table>
+
+<div style="text-align: center; margin-top: 20px;">
+            <button type="submit" class="button-17"  style="color:purple;">
+                Save
+            </button>
+        </div>
+</form>
+ <div style="position: absolute; top: 20px; left: 20px;">
+    <a href="{% url 'adminfaculty' %}">
+        <button class="button-17" style="padding: 5px; border: none; background-color: white;">
+            &#8592; <!-- Unicode character for a left arrow -->
+        </button>
+    </a>
+    </div>
+{% endblock %}

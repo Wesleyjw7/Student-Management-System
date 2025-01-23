@@ -1,0 +1,37 @@
+{% extends 'adminhome.html' %}
+{% block 'body' %}
+
+<h3 align="center"><u>Add Faculty</u></h3>
+<center>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save" class="button-17">
+</form>
+</center>
+
+{% if messages %}
+
+    <div id="message-box-container">
+        {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Automatically hide the message box after a delay (optional)
+        const messageBox = document.getElementById('message-box-container');
+        if (messageBox) {
+            setTimeout(() => {
+                messageBox.style.display = 'none';
+            }, 5000); // Hide after 5 seconds
+        }
+    });
+</script>
+
+{% endblock %}

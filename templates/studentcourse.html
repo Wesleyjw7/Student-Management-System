@@ -1,0 +1,89 @@
+{% extends 'studenthome.html' %}
+{% block 'body' %}
+
+<h4  style="color:#E0E0E0 ;margin-left:385px"><u>View Courses</u></h4>
+{% if messages %}
+    <div id="message-box-container">
+        {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show custom-alert" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+<br>
+<form method="post" action="studentviewcourse">
+    {% csrf_token %}
+
+    <table align="center" width="30%" height="20%">
+        <tr>
+            <td><label style="color:#AAF0D1">Acaemic Year</label></td>
+            <td>
+                <select class="button-17" name="sy">
+                    <option>--select--</option>
+                    <option>2021-2022</option>
+                    <option>2022-2023</option>
+                    <option>2023-2024</option>
+                    <option>2024-2025</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label style="color:#AAF0D1">Semester</label></td>
+            <td>
+                <select class="button-17" name="ssm">
+                    <option>--select--</option>
+                    <option>Even</option>
+                    <option>Odd</option>
+                </select>
+            </td>
+        </tr>
+
+    </table>
+
+<div style="text-align: center; margin-top: 20px;">
+            <button type="view" class="button-17"  style="color:purple;">
+                Save
+            </button>
+        </div>
+
+</form>
+<style>
+    #message-box-container {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1050;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .custom-alert {
+        background-color:aqua;
+        width: 200px;
+        padding: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-close {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Automatically hide the message box after a delay (optional)
+        const messageBox = document.getElementById('message-box-container');
+        if (messageBox) {
+            setTimeout(() => {
+                messageBox.style.display = 'none';
+            }, 5000); // Hide after 5 seconds
+        }
+    });
+</script>
+
+{% endblock %}

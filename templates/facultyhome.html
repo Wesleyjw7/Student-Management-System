@@ -1,0 +1,31 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SMS PROJECT</title>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/nav.css' %}"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body bgcolor="lightblue">
+<h3 align="right" style="color:teal; opacity:0.9; margin-right:10px;margin-top:70px; position:absolute;
+                    right:10px"><i>welcome {{ffid}} </i> </h3>
+<nav class="navbar">
+    <div class="logo"> SMS</div>
+    <ul class="menu">
+<li><a href="{% url 'facultyhome' %}" style="color:#E0E0E0">Home</a>&nbsp;</li>
+<li><a href="{% url 'facultychangepassword' %}" style="color:#E0E0E0">Change Password</a>&nbsp;</li>
+<li><a href="{% url 'facultycourses' %}" style="color:#E0E0E0">My Courses</a>&nbsp;</li>
+<li><a href="{% url 'facultylogin' %}" style="color:#E0E0E0">Logout</a>&nbsp;</li>
+    </ul>
+</nav>
+<br>
+
+{% block 'body' %}
+<p align="center" style="color:lavender">This is Faculty home</p>
+{% endblock %}
+
+</body>
+</html>

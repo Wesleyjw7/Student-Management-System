@@ -1,0 +1,56 @@
+{% extends "viewstudent.html" %}
+{% block 'body' %}
+<h3 align="center"><u>View All Courses</u></h3>
+<input class="textbox" id="myInput" type="text" placeholder="Search"/>
+  <br>
+<table align="center" border="2" width="90%" height="20%" class="table1">
+    <thead>
+    <tr bgcolor="lightgray">
+        <td>ID</td>
+        <td>Department</td>
+        <td>Academic year</td>
+        <td>Semester</td>
+        <td>Year</td>
+        <td>Coursecode</td>
+        <td>Coursetitle</td>
+        <td>Credits</td>
+        <td>Action</td>
+    </tr>
+    </thead>
+    {% for course in coursedata %}
+    <tbody id="myTable">
+    <tr bgcolor="lavender">
+        <td>{{course.id}}</td>
+        <td>{{course.department}}</td>
+        <td>{{course.academicyear}}</td>
+        <td>{{course.semester}}</td>
+        <td>{{course.year}}</td>
+        <td>{{course.coursecode}}</td>
+        <td>{{course.coursetitle}}</td>
+        <td>{{course.credits}}</td>
+        <td>
+            <a href="/coursedeletion/{{course.id}}">Delete</a>
+        </td>
+
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<div style="position: absolute; top: 20px; left: 20px;">
+    <a href="{% url 'admincourse' %}">
+        <button class="button-17" style="padding: 5px; border: none; background-color: white;">
+            &#8592; <!-- Unicode character for a left arrow -->
+        </button>
+    </a>
+</div>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "adminhome.html" %}
+{% block 'body' %}
+<div style="text-color:purple">
+    <center>
+    <button class="button-17" onclick="navigateTo('{% url 'addcourse' %}')" style="color:purple ;margin-top:40px">
+        Add Course
+    </button>
+    <br>
+    <button class="button-17" onclick="navigateTo('{% url 'viewcourse' %}')" style="color:purple;margin-top:20px">
+        View Courses
+    </button>
+    <br>
+    <button class="button-17" onclick="navigateTo('{% url 'updatecourse' %}')" style="color:purple ;margin-top:20px">
+        Update Course
+    </button>
+    <br>
+    <button class="button-17" onclick="navigateTo('{% url 'deletecourse' %}')" style="color:purple;margin-top:20px">
+        Delete Courses
+    </button>
+    </center>
+</div>
+
+<script>
+    function navigateTo(url) {
+        window.location.href = url;
+    }
+</script>
+{% endblock %}

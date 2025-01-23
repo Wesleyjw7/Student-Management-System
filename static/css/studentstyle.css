@@ -1,0 +1,41 @@
+.card-container {
+  position: relative;       /* Establish a positioning context */
+}
+
+.card {
+  position: absolute;       /* Position the card independently */
+  top: 30%;                 /* Move to the middle of the container */
+  left: 50%;                /* Center horizontally */
+  transform: translate(-50%, -50%); /* Center accurately */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: 0.3s;
+  width: 30%;
+  border-radius: 10px;
+  background-color: lightblue; /* White background for a clean look */
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+img {
+  border-radius: 10px 10px 0 0; /* Rounded corners for the image */
+}
+
+.container {
+  text-align: center;
+  padding: 15px;
+  color: #333333;          /* Dark gray for text */
+  background-color: #f7f9fc; /* Light blue-gray background */
+  font-family: Arial, sans-serif; /* Modern font */
+}
+
+h4 {
+  color: #007bff;          /* Blue color for the title */
+  margin: 0 0 10px 0;
+}
+
+p {
+  color: #666666;          /* Lighter gray for additional text */
+  margin: 0;
+}
